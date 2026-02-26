@@ -1,28 +1,39 @@
+//Projectile
+//Moves upward
+//Destroyed after a few seconds
+
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [Range(1, 10)]
     [SerializeField] private float bulletSpeed = 10f;//how fast bullet flies
 
-    [Range(1, 10)]
     [SerializeField] private float lifeTime = 3f;// how long bullet is live(on screen)
 
-    private Rigidbody2D rb;//rigid body 
+    private Rigidbody2D lazerRB;//rigid body 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, lifeTime); //what and when to destroy
+        DestroyLazer();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = transform.up * bulletSpeed; //bulet flies forward until destroyed
-        //OnTriggerEnter2d(Collider2D //add trigger enter 
-        
+        MoveLazer();
     }
+
+    void MoveLazer ()
+    {
+        lazerRB.linearVelocity = transform.up * bulletSpeed; //bulet flies forward until destroyed        
+    }
+
+    void DestroyLazer()
+    {
+        lazerRB = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, lifeTime); //what (lazer) and when to destroy
+    }
+
 }
