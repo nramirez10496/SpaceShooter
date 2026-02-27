@@ -9,9 +9,11 @@ public class PlayerLogic : MonoBehaviour
 {
     //player variables
     [SerializeField] int moveSpeed = 10;//speed player moves at
+    
     //lazer variables
     [SerializeField] private GameObject lazerPrefab;//lazer
     [SerializeField] private Transform firingPoint;// point lazer will fire from
+    
     //firing variables
     [SerializeField] private float firingRate = 0.5f;//rate for firing
     private float fireTimer;//when user can shoot
@@ -20,15 +22,15 @@ public class PlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
+        MovePlayer();//call MovePlayer
 
-        FireTimer();
+        FireTimer();//call FireTimer
     }
 
 
     void MovePlayer()
     { 
-        float horizontalInput = Input.GetAxis("Horizontal");//left hor input is -1 and right = 1 to move player
+        float horizontalInput = Input.GetAxis("Horizontal");//left hor input is -1 and right = 1 to move player left and right from its position
         transform.Translate(Vector3.right * horizontalInput * moveSpeed * Time.deltaTime);// input deltatyime smooths things out 
 
     }
@@ -47,7 +49,7 @@ public class PlayerLogic : MonoBehaviour
         }
         else//after amount of time it will become less than 0 and allows shooting again
         {
-            fireTimer -= Time.deltaTime;
+            fireTimer -= Time.deltaTime;//countdown timer 
         }
     }
 

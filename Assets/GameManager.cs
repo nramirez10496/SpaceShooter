@@ -18,15 +18,19 @@ public class GameManager : MonoBehaviour
 
     int score = 0;//variable to hold the player score 0 at start
 
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
+    {
+        StartGame();//call startgame
+        UpdateScoreText();//call updatescoretext
+    }
+
+
+    public void StartGame()
     {
         GameOverPanel.SetActive(false);//Hide game over
         Time.timeScale = 1f;// start game movement
         score = 0;//initial score 0 
-        UpdateScoreText();
     }
 
 
@@ -38,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore (int amount)
     {
-        score += amount;//add set amount from enemy to score
+        score += amount;//add set amount (10) from enemy to score
         UpdateScoreText ();//update score
     }
 
@@ -51,9 +55,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;// start game movement
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("RESTART");
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);//reloads scene
     }
 
     public void GameOver()

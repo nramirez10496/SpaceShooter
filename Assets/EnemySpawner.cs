@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject enemyPrefab;//enemy prefab
 
-    float timeSinceLastSpawn = 0;
-    [SerializeField] float timeBetweenSpawn = 2;
+    float timeSinceLastSpawn = 0;//set the time since spawn 
+    [SerializeField] float timeBetweenSpawn = 2;// set time between spawns
 
     // Update is called once per frame
     void Update()
     {
-        SpawnTime();
+        SpawnTime();//call spawntime 
     }
 
     public void SpawnEnemy()
@@ -24,13 +24,12 @@ public class EnemySpawner : MonoBehaviour
         timeSinceLastSpawn = 0;//reset time to 0
     }
 
-
     public void SpawnTime()
     {
         timeSinceLastSpawn += Time.deltaTime;//add up time
         if (timeSinceLastSpawn > timeBetweenSpawn)//if set(2) seconds pass spawn another 
         {
-            SpawnEnemy();
+            SpawnEnemy();//call spawn enemy
         }
     }
 

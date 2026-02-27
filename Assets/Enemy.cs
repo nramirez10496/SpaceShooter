@@ -11,36 +11,30 @@ public class Enemy : MonoBehaviour
     public float enemySpeed = 3f; //speed enemy will come down
     private Rigidbody2D enemyRB;//enemy rb
 
-    //[SerializeField] GameManager playerPoints;//access points 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        enemyRB = GetComponent<Rigidbody2D>();//get component
+        enemyRB = GetComponent<Rigidbody2D>();//get enemy component
     }
 
     // Update is called once per frame
     void Update()
     {
-        EnemyMovement();
+        EnemyMovement();//call enemymovement
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     { 
-        if (collision.gameObject.CompareTag("Floor"))//if enemy passes the screen
+        if (collision.gameObject.CompareTag("Floor"))//if enemy passes the screen floor
         {
             GameManager.manager.GameOver();//game over
-            Debug.Log("GAMEOVER");
         }
-
-
 
         else if (collision.gameObject.CompareTag("Lazer"))//if the enemy was hit
         {
-            GameManager.manager.AddScore(10);//10 points per killed enemy
+            GameManager.manager.AddScore(10);//+10 points per killed enemy
             Destroy(collision.gameObject);//lazer is destroyed
             Destroy(gameObject);//enemy is destroyed
-
         }
     }
      
@@ -48,6 +42,4 @@ public class Enemy : MonoBehaviour
     {
         enemyRB.linearVelocity = Vector3.down * enemySpeed;//enemy will come down at set speed
     }
-
-    
 }
