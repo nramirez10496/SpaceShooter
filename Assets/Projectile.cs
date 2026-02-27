@@ -10,13 +10,12 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private float lifeTime = 3f;// how long bullet is live(on screen)
 
-    private Rigidbody2D lazerRB;//rigid body 
+    private Rigidbody2D lazerRB;//laser rigid body 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DestroyLazer();
-        
+        DestroyLazer();  
     }
 
     // Update is called once per frame
@@ -32,7 +31,7 @@ public class Projectile : MonoBehaviour
 
     void DestroyLazer()
     {
-        lazerRB = GetComponent<Rigidbody2D>();
+        lazerRB = GetComponent<Rigidbody2D>();//get lazer
         Destroy(gameObject, lifeTime); //what (lazer) and when to destroy
     }
 
